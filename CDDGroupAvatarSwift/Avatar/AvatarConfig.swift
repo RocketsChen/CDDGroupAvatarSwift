@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+
 
 public struct AvatarConfig {
     
@@ -26,14 +28,14 @@ public struct AvatarConfig {
 /// 头像类型枚举
 ///
 /// - Parameters:
-///   - DCGroupAvatarWeChatType: 微信
-///   - DCGroupAvatarNewQQType:  QQ（以中心点分割的半圆拼接）
-///   - DCGroupAvatarOldQQType:  WeiBo（圆拼接）
+///   - WeChat: 微信
+///   - NewQQ:  QQ（以中心点分割的半圆拼接）
+///   - OldQQ:  WeiBo（圆拼接）
 public enum DCGroupAvatarType: Int {
 
-    case DCGroupAvatarWeChatType
-    case DCGroupAvatarQQType
-    case DCGroupAvatarWeiBoType
+    case WeChat
+    case QQ
+    case WeiBo
 }
 
 
@@ -45,8 +47,8 @@ public enum DCGroupAvatarType: Int {
 ///   - SDCGroupAvatarRefreshCached: 先读缓存再获取最新
 public enum DCGroupAvatarCacheType: Int {
 
-    case DCGroupAvatarCachedDefault
-    case DCGroupAvatarCachedRefresh
+    case Default
+    case Refresh
 }
 
 /// 组内头像的数量
@@ -118,17 +120,33 @@ extension AvatarConfig {
         idMD5(groupId, groupSource)
     }
 
-    public static func noCacheIdMD5(_ groupId: String , _ groupSource: [String]) -> String {
+    public static func noCacheIdMD5(_ groupId: String , _ groupSource: [UIImage]) -> String {
         return idMD5(groupId, groupSource)
     }
     
     
     // MARK: - 私有方法
-    private static func idMD5(_ groupId: String , _ groupSource: [String]) -> String {
-        let appStrs = "id\(groupId)_num\(groupSource.count)_lastObj\(groupSource.last ?? "")_distance\(AvatarManager.distanceBetweenAvatar)_bordWidth\(AvatarManager.avatarBgColor)_bgColor\(AvatarManager.avatarBgColor)"
+    private static func idMD5(_ groupId: String , _ groupSource: [Any]) -> String {
+        
+        if groupSource.count == 0 {
+            return ""
+        }
+        
+        let appStrs = "id\(groupId)_num\(groupSource.count)_lastObj\(groupSource.last!)_distance\(AvatarManager.distanceBetweenAvatar)_bordWidth\(AvatarManager.avatarBgColor)_bgColor\(AvatarManager.avatarBgColor)"
         return appStrs.md5 ?? ""
     }
 
 }
+
+
+public typealias GroupImageHandler = ((_ groupId: String, _ groupImage: UIImage, _ itemImageArray: [UIImage], _ cacheId: String) -> Void)
+
+public typealias GroupSetImageHandler = (_ setImage: UIImage) -> Void
+
+public typealias GroupImageParamsHandler = () -> Void
+
+public typealias FetchImageHandler = (_ unitImages: [UIImage], _ succeed: Bool) -> Void
+
+public typealias FetchImageParamsHandler = () -> Void
 
 

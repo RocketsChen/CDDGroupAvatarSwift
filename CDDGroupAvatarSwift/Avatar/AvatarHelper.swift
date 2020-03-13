@@ -11,26 +11,26 @@ import CommonCrypto
 
 
 
-struct AvatarHelper {
+struct AvatarHelper<T> {
     
     // MARK: - 获取群头像最大数组数量
-    public static func getTypefMaxCount(_ groupSource: [String], groupAvatarType: DCGroupAvatarType) -> [String] {
+    public static func getTypefMaxCount(_ groupSource: [T], _ groupAvatarType: DCGroupAvatarType) -> [T] {
         
-        var newSource = [String]()
+        var newSource = [T]()
         var count: Int
         switch groupAvatarType {
             
-            case .DCGroupAvatarWeChatType:
+            case .WeChat:
                 count = AvatarConfig.DCMaxWeChatCount
             
-            case .DCGroupAvatarQQType:
+            case .QQ:
                 count = AvatarConfig.DCMaxQQCount
             
-            case .DCGroupAvatarWeiBoType:
+            case .WeiBo:
                 count = AvatarConfig.DCMaxWeiBoCount
         }
         
-        for i in 0...min(count, groupSource.count) {
+        for i in 0..<min(count, groupSource.count) {
             newSource.append(groupSource[i])
         }
         return newSource
@@ -39,7 +39,7 @@ struct AvatarHelper {
 }
 
 
-extension AvatarHelper {
+struct AvatarHelperTool {
     
     // MARK: - 计算Type_QQ头像尺寸
     public static func calculateSizeQQAvatarGroup(_ groupCount: Int, _ index: Int, _ containerSize: CGSize, _ distance: CGFloat) -> CGSize {
@@ -112,7 +112,7 @@ extension AvatarHelper {
     
     
     // MARK: - 计算Type_WeiBo小头像位置
-    public static func calculateWeiBoAvatarGroupCount(groupCount: Int, index: Int, containerSize: CGSize, distance: CGFloat) -> CGPoint {
+    public static func calculateWeiBoAvatarGroup(_ groupCount: Int, _ index: Int, _ containerSize: CGSize, _ distance: CGFloat) -> CGPoint {
 
         var avatarPoint = CGPoint.zero
         var avatarDiameter: CGFloat = calculateRadiusWeiBoAvatarGroup(groupCount, containerSize, distance)
@@ -121,7 +121,7 @@ extension AvatarHelper {
         let shrinkage: CGFloat = groupCount == DCNumberOfGroupAvatarType.Four.description() ? distance : -2 * distance
         let indexFloat = CGFloat(index)
         let groupCountFloat = CGFloat(groupCount)
-        let piFloat = CGFloat(Double.pi)
+        let piFloat = CGFloat.pi
 
         if (groupCount == DCNumberOfGroupAvatarType.One.description()) {
 
@@ -159,13 +159,13 @@ extension AvatarHelper {
     }
     
     // MARK: - 计算Type_WeChat/QQ小头像位置
-    public static func calculateWeiBoAvatarGroupCount(groupCount: Int, index: Int, containerSize: CGSize, distance: CGFloat, avatarType: DCGroupAvatarType) -> CGPoint {
+    public static func calculatePointAvatarGroup(_ groupCount: Int, _ index: Int, _ containerSize: CGSize, _ distance: CGFloat, _ avatarType: DCGroupAvatarType) -> CGPoint {
         
         var avatarPoint = CGPoint.zero
         
         let wcSize: CGSize = calculateSizeWeChatAvatarGroup(groupCount, containerSize, distance)
         let qqSize: CGSize = calculateSizeQQAvatarGroup(groupCount, index, containerSize, distance)
-        let avatarSize: CGSize = (avatarType == .DCGroupAvatarWeChatType) ? wcSize : qqSize
+        let avatarSize: CGSize = (avatarType == .WeChat) ? wcSize : qqSize
         
         var currentIndex = index
         let avaWidth = avatarSize.width
@@ -177,22 +177,22 @@ extension AvatarHelper {
         
         switch groupCount {
             case DCNumberOfGroupAvatarType.One.description():
-                if avatarType == .DCGroupAvatarWeChatType {
+                if avatarType == .WeChat {
                     avatarPoint = CGPoint(x: (containerSize.width - avaWidth)  * 0.5, y: (containerSize.height - avaHeight) * 0.5)
                 }
             case DCNumberOfGroupAvatarType.Two.description():
             
-                if avatarType == .DCGroupAvatarWeChatType {
+                if avatarType == .WeChat {
                     
                     avatarPoint = CGPoint(x: currentIndexFloat * (avaWidth + distance) + distance, y: (containerSize.height - avaHeight) / 2)
-                }else if avatarType == .DCGroupAvatarQQType {
+                }else if avatarType == .QQ {
                     
                     avatarPoint = CGPoint(x: currentIndexFloat * (avaWidth + distance), y: 0)
                 }
             
             case DCNumberOfGroupAvatarType.Three.description():
                 
-                if avatarType == .DCGroupAvatarWeChatType {
+                if avatarType == .WeChat {
                     
                     if currentIndex == 0 {
                         avatarPoint = CGPoint(x: (containerSize.width - avaWidth) / 2, y: distance)
@@ -201,7 +201,7 @@ extension AvatarHelper {
                         avatarPoint = CGPoint(x: (currentIndexFloat - 1) * (avaWidth + distance) + distance, y: avaHeight + 2 * distance)
                     }
                     
-                }else if avatarType == .DCGroupAvatarQQType {
+                }else if avatarType == .QQ {
                     
                     if currentIndex == 0 {
                         avatarPoint = CGPoint(x: 0, y: 0);
@@ -216,20 +216,21 @@ extension AvatarHelper {
             
             case DCNumberOfGroupAvatarType.Four.description():
                 
-                column = currentIndexFloat / 2
-                row = currentIndexFloat - (column *  2)
+                column = computing(currentIndexFloat, 2).column
+                row = computing(currentIndexFloat, 2).row
                 
-                if avatarType == .DCGroupAvatarWeChatType {
+                if avatarType == .WeChat {
                     
                     avatarPoint = CGPoint(x: row * (avaWidth + distance) + distance, y: column * (avaHeight + distance) + distance)
-                }else if avatarType == .DCGroupAvatarQQType {
+                    
+                }else if avatarType == .QQ {
                     
                     avatarPoint = CGPoint(x: row * (avaWidth + distance), y: column * (avaHeight + distance))
                 }
             
             case DCNumberOfGroupAvatarType.Five.description():
                 
-                if avatarType == .DCGroupAvatarWeChatType {
+                if avatarType == .WeChat {
                     
                     let tempPoint = CGPoint(x: (containerSize.width -  distance - (2 * avaWidth)) / 2, y: (containerSize.height -  distance - (2 * avaHeight)) / 2)
                     if currentIndex <= 1 {
@@ -244,44 +245,44 @@ extension AvatarHelper {
                 
                 let tempPointY: CGFloat = (containerSize.height -  distance - (2 * avaHeight)) / 2
                 
-                if avatarType == .DCGroupAvatarWeChatType {
-                    column = currentIndexFloat / CGFloat(AvatarConfig.DCMaxWeChatColumn)
-                    row = currentIndexFloat - CGFloat((column *  maxWeiChatCount))
+                if avatarType == .WeChat {
+                    column = computing(currentIndexFloat, maxWeiChatCount).column
+                    row = computing(currentIndexFloat, maxWeiChatCount).row
                     avatarPoint = CGPoint(x: row * (avaWidth + distance) + distance, y: column * (avaHeight + distance) + tempPointY)
                 }
             
             case DCNumberOfGroupAvatarType.Seven.description():
-                if avatarType == .DCGroupAvatarWeChatType {
+                if avatarType == .WeChat {
                     
                     if currentIndex == 0 {
                         
                         avatarPoint = CGPoint(x: (containerSize.width - avaWidth) / 2, y: distance)
                     }else {
 
-                        column = currentIndexFloat / CGFloat(AvatarConfig.DCMaxWeChatColumn)
-                        row = currentIndexFloat - CGFloat((column *  maxWeiChatCount))
+                        column = computing(currentIndexFloat + 2, maxWeiChatCount).column
+                        row = computing(currentIndexFloat + 2, maxWeiChatCount).row
                         avatarPoint = CGPoint(x: row * (avaWidth + distance) + distance, y: column * (avaHeight + distance) + distance)
                     }
                 }
             
                 
             case DCNumberOfGroupAvatarType.Eight.description():
-                if avatarType == .DCGroupAvatarWeChatType {
+                if avatarType == .WeChat {
                     
                     if currentIndex < 2 {
                         let tempPointX = (containerSize.width - 2 * avaWidth - distance) / 2
                         avatarPoint = CGPoint(x: currentIndexFloat * (avaWidth + distance) + tempPointX, y: distance)
                     }else {
-                        column = (currentIndexFloat + 1)  / maxWeiChatCount
-                        row = (currentIndexFloat + 1) - CGFloat((column *  maxWeiChatCount))
+                        column = computing(currentIndexFloat + 1, maxWeiChatCount).column
+                        row = computing(currentIndexFloat + 1, maxWeiChatCount).row
                         avatarPoint = CGPoint(x: row * (avaWidth + distance) + distance, y: column * (avaHeight + distance) + distance)
                     }
                 }
             
             case DCNumberOfGroupAvatarType.Nine.description():
-                if avatarType == .DCGroupAvatarWeChatType {
-                    column = currentIndexFloat / maxWeiChatCount
-                    row = currentIndexFloat - CGFloat((column *  maxWeiChatCount))
+                if avatarType == .WeChat {
+                    column = computing(currentIndexFloat, maxWeiChatCount).column
+                    row = computing(currentIndexFloat, maxWeiChatCount).row
                     avatarPoint = CGPoint(x: row * (avaWidth + distance) + distance, y: column * (avaHeight + distance) + distance)
                 }
             default:
@@ -293,10 +294,23 @@ extension AvatarHelper {
 }
 
 
+extension AvatarHelperTool {
+    
+    // MARK: - 计算行和列
+    private static func computing(_ current: CGFloat , _ operation: CGFloat) -> (column: CGFloat, row: CGFloat) {
+
+        let columnInt = Int(current) / Int(operation)
+        let rowInt = Int(current) % Int(operation)
+        return(column: CGFloat(columnInt), row: CGFloat(rowInt))
+    }
+    
+}
+
+
 
 extension String {
     
-    var md5: String? {
+    public var md5: String? {
         
        let str = self.cString(using: String.Encoding.utf8)
        let strLen = CUnsignedInt(self.lengthOfBytes(using: String.Encoding.utf8))
@@ -317,7 +331,7 @@ extension String {
 extension UIColor {
      
     // MARK: - 颜色转字符串
-    var hexString: String? {
+    public var hexString: String? {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
@@ -347,4 +361,44 @@ extension UIColor {
             )
         }
     }
+}
+
+
+
+extension UIImage {
+    
+    public func cutImageView(_ size: CGSize, _ rect: CGRect) -> UIImage {
+        
+        var clipImage: UIImage = self
+        let scaleWidth: CGFloat = self.size.width / size.width
+        let scaleHeight: CGFloat = self.size.height / size.height
+        let clipRect = CGRect(x: rect.origin.x * scaleWidth, y: rect.origin.y * scaleHeight, width: rect.size.width * scaleWidth, height: rect.size.height * scaleHeight)
+        
+        UIGraphicsBeginImageContext(clipRect.size)
+        clipImage.draw(at: CGPoint(x: -clipRect.origin.x, y: -clipRect.origin.y))
+        clipImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return clipImage
+        
+    }
+    
+    
+    public func cgContextAddArcToPointImage(_ borderWidth: CGFloat, _ borderColor: UIColor) -> UIImage {
+        
+        var avatarImage: UIImage = self
+        let size: CGSize = CGSize(width: avatarImage.size.width + 2 * borderWidth, height: avatarImage.size.height + 2 * borderWidth)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        var path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        borderColor.set()
+        path.fill()
+        path = UIBezierPath(ovalIn: CGRect(x: borderWidth, y: borderWidth, width: avatarImage.size.width, height: avatarImage.size.height))
+        path.addClip()
+        avatarImage.draw(in: CGRect(x: borderWidth, y: borderWidth, width: avatarImage.size.width, height: avatarImage.size.height))
+        avatarImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return avatarImage
+    }
+    
 }

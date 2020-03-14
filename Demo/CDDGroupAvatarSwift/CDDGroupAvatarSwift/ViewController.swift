@@ -56,7 +56,7 @@ extension ViewController {
     
     func setUpNoCache() {
         
-        NoCacheAvatarManager.groupAvatarType = .WeChat
+        NoCacheAvatarManager.groupAvatarType = .QQ
         
         
         /// ImageView

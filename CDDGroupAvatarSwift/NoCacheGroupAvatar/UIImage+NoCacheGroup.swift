@@ -80,6 +80,10 @@ extension UIImage {
         groupImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
+        if (avatarType == .QQ) {
+            groupImage = groupImage.cgContextAddArcToPointImage(0, .clear)
+        }
+        
         return groupImage
     }
 

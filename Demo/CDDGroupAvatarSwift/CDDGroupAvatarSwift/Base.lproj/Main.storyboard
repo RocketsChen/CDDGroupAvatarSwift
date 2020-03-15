@@ -207,7 +207,20 @@
                     </view>
                     <navigationItem key="navigationItem" id="eMH-E6-4P5"/>
                     <connections>
+                        <outlet property="avImageViewNQ2" destination="RVq-Xw-s0c" id="H9G-8w-bDH"/>
+                        <outlet property="avImageViewNQ3" destination="GXG-yU-2Vl" id="Ehv-er-w4T"/>
+                        <outlet property="avImageViewNQ4" destination="7mR-l8-tqx" id="lAa-HJ-9q8"/>
                         <outlet property="avImageViewW2" destination="yaG-xa-AEK" id="Cwe-vq-R4Q"/>
+                        <outlet property="avImageViewW3" destination="K7b-tc-K3u" id="gIy-Yg-eUO"/>
+                        <outlet property="avImageViewW4" destination="tNU-e5-PS7" id="jpx-Se-MQS"/>
+                        <outlet property="avImageViewW5" destination="DaF-Al-cPs" id="njs-O4-eyj"/>
+                        <outlet property="avImageViewW6" destination="pJ2-5b-qHS" id="BmP-9e-AaK"/>
+                        <outlet property="avImageViewW7" destination="8HX-Le-VCr" id="RKK-7y-U1z"/>
+                        <outlet property="avImageViewW8" destination="w0d-aa-GJ3" id="tcp-XA-f8w"/>
+                        <outlet property="avImageViewW9" destination="Rl5-KQ-N9v" id="Qv8-NZ-kNu"/>
+                        <outlet property="avImageViewWeiBo2" destination="WbT-16-7Lw" id="94M-wb-aY4"/>
+                        <outlet property="avImageViewWeiBo3" destination="Bml-1K-ygK" id="S4V-V2-o9W"/>
+                        <outlet property="avImageViewWeiBo4" destination="gVR-wh-MyH" id="MBe-gn-reW"/>
                         <outlet property="avaBgButton" destination="PVB-XB-RRl" id="KeK-xl-05a"/>
                         <outlet property="avaButton" destination="rU2-dE-0Q2" id="kbY-cU-rKt"/>
                         <outlet property="ncImageViewW1" destination="B66-S8-zgu" id="zBO-tU-eht"/>

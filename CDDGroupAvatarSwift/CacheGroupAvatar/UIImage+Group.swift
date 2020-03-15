@@ -1,8 +1,8 @@
 //
-//  UIImage+NoCacheGroup.swift
+//  UIImage+Group.swift
 //  CDDGroupAvatarSwift
 //
-//  Created by 陈甸甸 on 2020/3/13.
+//  Created by 陈甸甸 on 2020/3/15.
 //  Copyright © 2020 RocketsChen. All rights reserved.
 //
 
@@ -10,16 +10,15 @@ import UIKit
 
 extension UIImage {
     
-    
     /// 拼接群头像
     /// - Parameters:
     ///   - groupSource: 数据源
     ///   - size: 大小
-    public static func getGroupImage(_ groupSource: [UIImage], _ size: CGSize, _ avatarType: DCGroupAvatarType) -> UIImage {
+    public static func cacheGroupImage(_ groupSource: [UIImage], _ size: CGSize, _ avatarType: DCGroupAvatarType) -> UIImage {
     
-        let maxSource: [UIImage] = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
-        let avatarBgColor = NoCacheAvatarManager.avatarBgColor
-        let distance = NoCacheAvatarManager.distanceBetweenAvatar
+        let maxSource = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
+        let avatarBgColor = AvatarManager.avatarBgColor
+        let distance = AvatarManager.distanceBetweenAvatar
         
         var groupImage = UIImage()
         
@@ -85,5 +84,5 @@ extension UIImage {
         
         return groupImage
     }
-
+    
 }

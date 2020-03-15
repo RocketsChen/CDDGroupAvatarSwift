@@ -15,6 +15,7 @@
 		9C24B6FC2418F67C0017E2FA /* UIButton+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24B6FB2418F67C0017E2FA /* UIButton+NoCacheGroup.swift */; };
 		9C24B6FE2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24B6FD2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift */; };
 		9C3772DE241B955E00EF890A /* UIImage+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3772DD241B955E00EF890A /* UIImage+NoCacheGroup.swift */; };
+		9C7E38BB241E177400053FF0 /* UIImage+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E38BA241E177400053FF0 /* UIImage+Group.swift */; };
 		9CCFC5D0241506690032F6DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC5CF241506690032F6DF /* AppDelegate.swift */; };
 		9CCFC5D4241506690032F6DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC5D3241506690032F6DF /* ViewController.swift */; };
 		9CCFC5D7241506690032F6DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CCFC5D5241506690032F6DF /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		9C24B6FB2418F67C0017E2FA /* UIButton+NoCacheGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+NoCacheGroup.swift"; sourceTree = "<group>"; };
 		9C24B6FD2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+NoCacheGroup.swift"; sourceTree = "<group>"; };
 		9C3772DD241B955E00EF890A /* UIImage+NoCacheGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+NoCacheGroup.swift"; sourceTree = "<group>"; };
+		9C7E38BA241E177400053FF0 /* UIImage+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Group.swift"; sourceTree = "<group>"; };
 		9CCFC5CC241506680032F6DF /* CDDGroupAvatarSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CDDGroupAvatarSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CCFC5CF241506690032F6DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CCFC5D3241506690032F6DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				9C24B6F32418BE3D0017E2FA /* CacheAvatarHelper.swift */,
 				9C24B6F52418BF2D0017E2FA /* UIButton+Group.swift */,
 				9C24B6F72418BF510017E2FA /* UIImageView+Group.swift */,
+				9C7E38BA241E177400053FF0 /* UIImage+Group.swift */,
 			);
 			path = CacheGroupAvatar;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			files = (
 				9C24B6FA2418F2B00017E2FA /* NoCacheAvatarManager.swift in Sources */,
 				9CCFC5D4241506690032F6DF /* ViewController.swift in Sources */,
+				9C7E38BB241E177400053FF0 /* UIImage+Group.swift in Sources */,
 				9C24B6F62418BF2D0017E2FA /* UIButton+Group.swift in Sources */,
 				9C3772DE241B955E00EF890A /* UIImage+NoCacheGroup.swift in Sources */,
 				9CCFC5E824154AE20032F6DF /* TestViewController.swift in Sources */,

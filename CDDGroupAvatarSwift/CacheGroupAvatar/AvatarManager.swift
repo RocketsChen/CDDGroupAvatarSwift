@@ -15,7 +15,7 @@ public struct AvatarManager {
     public static var baseUrl: String?
     
     /// 一次性设置小头像加载失败的占位图 ： 权重低于类方法中的placeholder属性 placeholderImage < (id)placeholder
-    public static var placeholderImage: UIImageView = UIImageView()
+    public static var placeholderImage: UIImage = UIImage()
     
     /// 头像类型枚举(默认微信样式)
     public static var groupAvatarType: DCGroupAvatarType = .WeChat

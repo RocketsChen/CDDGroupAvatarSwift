@@ -13,8 +13,9 @@ extension UIButton {
     public func setNoCacheImageAvatar(groupId: String, groupSource: [UIImage], state: UIControl.State, setImageHandler: GroupSetImageHandler? = nil, groupImageHandler: GroupImageHandler? = nil) {
         
         var groupImage = UIImage()
-
-        let maxSource: [UIImage] = AvatarHelper.getTypefMaxCount(groupSource, NoCacheAvatarManager.groupAvatarType)
+        
+        let avatarType = NoCacheAvatarManager.groupAvatarType
+        let maxSource: [UIImage] = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
 
         let handler: GroupImageParamsHandler = {
             if setImageHandler != nil {
@@ -26,7 +27,7 @@ extension UIButton {
         }
 
         let containerSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
-        groupImage = UIImage.getGroupImage(maxSource, containerSize)
+        groupImage = UIImage.getGroupImage(maxSource, containerSize, avatarType)
         self.setImage(groupImage, for: state)
 
         handler() // block
@@ -37,8 +38,9 @@ extension UIButton {
     public func setNoCacheBackgroundAvatar(groupId: String, groupSource: [UIImage], state: UIControl.State, setImageHandler: GroupSetImageHandler? = nil, groupImageHandler: GroupImageHandler? = nil) {
 
         var groupImage = UIImage()
-
-        let maxSource: [UIImage] = AvatarHelper.getTypefMaxCount(groupSource, NoCacheAvatarManager.groupAvatarType)
+        
+        let avatarType = NoCacheAvatarManager.groupAvatarType
+        let maxSource: [UIImage] = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
 
         let handler: GroupImageParamsHandler = {
             if setImageHandler != nil {
@@ -50,7 +52,7 @@ extension UIButton {
         }
 
         let containerSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
-        groupImage = UIImage.getGroupImage(maxSource, containerSize)
+        groupImage = UIImage.getGroupImage(maxSource, containerSize, avatarType)
         self.setBackgroundImage(groupImage, for: state)
 
         handler() // block

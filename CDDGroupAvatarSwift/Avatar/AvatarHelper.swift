@@ -367,6 +367,7 @@ extension UIColor {
 
 extension UIImage {
     
+    // MARK: - 裁剪图片
     public func cutImageView(_ size: CGSize, _ rect: CGRect) -> UIImage {
         
         var clipImage: UIImage = self
@@ -384,6 +385,7 @@ extension UIImage {
     }
     
     
+    // MARK: - 画圆
     public func cgContextAddArcToPointImage(_ borderWidth: CGFloat, _ borderColor: UIColor) -> UIImage {
         
         var avatarImage: UIImage = self
@@ -401,4 +403,20 @@ extension UIImage {
         return avatarImage
     }
     
+    
+    // MARK: - 返回占位
+    public func backItemPlaceholderImage(_ placeholder: [UIImage]? = nil, _ groupCount: Int, _ groupIndex: Int) -> UIImage{
+        
+        var itemPlaceholder = self
+        guard let placeholderArray = placeholder else {
+            return itemPlaceholder
+        }
+        
+        if placeholderArray.count > 0 && placeholderArray.count >= groupCount {
+            let item = placeholderArray[groupIndex]
+            itemPlaceholder = item
+        }
+        return itemPlaceholder
+    }
+
 }

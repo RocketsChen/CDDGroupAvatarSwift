@@ -51,11 +51,7 @@ class ViewController: UIViewController {
 
         setUpUI()
     }
- 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        setUpUI()
-    }
+    
 }
 
 
@@ -68,21 +64,26 @@ extension ViewController {
     
         title = "CDDGroupAvatarSwift"
         
-        setupNav()
-        
-        setUpCache()
-        
-        setUpNoCache()
-        
+        setUpLoadData()
     }
     
     
     func setupNav() {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "table", style: .done, target: self, action: #selector(goToTest))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "clean", style: .done, target: self, action: #selector(goToTest))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "clean", style: .done, target: self, action: #selector(clean))
         navigationItem.rightBarButtonItem?.tintColor = .black
         navigationItem.leftBarButtonItem?.tintColor = .black
+    }
+    
+    
+    func setUpLoadData() {
+        
+        setupNav()
+        
+        setUpCache()
+        
+        setUpNoCache()
     }
 
 }
@@ -105,9 +106,8 @@ extension ViewController {
     // MARK: - WeiChat
     func setUpWeiChatCache() {
         
-        AvatarManager.groupAvatarType = .QQ
-        
         AvatarManager.groupAvatarType = .WeChat
+        
         avImageViewW2.setImageAvatar(groupId: "avImageViewW2", groupSource: ["1","2"], itemPlaceholder: [UIImage(named: "man")!, UIImage(named: "woman")!])
         avImageViewW3.setImageAvatar(groupId: "avImageViewW3", groupSource: ["006tNc79gy1g56or92vvmj30u00u048a.jpg", "006tNc79gy1g56mcmorgrj30rk0nm0ze.jpg", "006tNc79gy1g57h4j42ppj30u00u00vy.jpg"])
         avImageViewW4.setImageAvatar(groupId: "avImageViewW4", groupSource: ["006tNc79gy1g56or92vvmj30u00u048a.jpg", "006tNc79gy1g56mcmorgrj30rk0nm0ze.jpg", "006tNc79gy1g57h4j42ppj30u00u00vy.jpg", "006tNc79gy1g57hfrnhe6j30u00w01eu.jpg"])
@@ -187,6 +187,7 @@ extension ViewController {
     // MARK: - tableView测试
     @objc func goToTest() {
         
+        navigationController?.pushViewController(TestViewController(), animated: true)
     }
 
     // MARK: - 清理缓存
@@ -194,5 +195,6 @@ extension ViewController {
         
         ImageCache.default.clearDiskCache()
         ImageCache.default.clearMemoryCache()
+        setUpLoadData()
     }
 }

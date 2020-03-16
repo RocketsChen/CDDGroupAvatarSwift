@@ -16,6 +16,8 @@
 		9C24B6FE2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24B6FD2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift */; };
 		9C3772DE241B955E00EF890A /* UIImage+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3772DD241B955E00EF890A /* UIImage+NoCacheGroup.swift */; };
 		9C7E38BB241E177400053FF0 /* UIImage+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E38BA241E177400053FF0 /* UIImage+Group.swift */; };
+		9CB957AA241F2EC000784FA4 /* KMCGeigerCounterTick.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9CB957A7241F2EC000784FA4 /* KMCGeigerCounterTick.aiff */; };
+		9CB957AB241F2EC000784FA4 /* KMCGeigerCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB957A9241F2EC000784FA4 /* KMCGeigerCounter.m */; };
 		9CCFC5D0241506690032F6DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC5CF241506690032F6DF /* AppDelegate.swift */; };
 		9CCFC5D4241506690032F6DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC5D3241506690032F6DF /* ViewController.swift */; };
 		9CCFC5D7241506690032F6DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CCFC5D5241506690032F6DF /* Main.storyboard */; };
@@ -38,6 +40,10 @@
 		9C24B6FD2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+NoCacheGroup.swift"; sourceTree = "<group>"; };
 		9C3772DD241B955E00EF890A /* UIImage+NoCacheGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+NoCacheGroup.swift"; sourceTree = "<group>"; };
 		9C7E38BA241E177400053FF0 /* UIImage+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Group.swift"; sourceTree = "<group>"; };
+		9CB957A7241F2EC000784FA4 /* KMCGeigerCounterTick.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = KMCGeigerCounterTick.aiff; sourceTree = "<group>"; };
+		9CB957A8241F2EC000784FA4 /* KMCGeigerCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCGeigerCounter.h; sourceTree = "<group>"; };
+		9CB957A9241F2EC000784FA4 /* KMCGeigerCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCGeigerCounter.m; sourceTree = "<group>"; };
+		9CB957B2241F2FDB00784FA4 /* CDDGroupAvatarSwift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDDGroupAvatarSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		9CCFC5CC241506680032F6DF /* CDDGroupAvatarSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CDDGroupAvatarSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CCFC5CF241506690032F6DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CCFC5D3241506690032F6DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +87,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9CB957A5241F2EC000784FA4 /* PFS */ = {
+			isa = PBXGroup;
+			children = (
+				9CB957A6241F2EC000784FA4 /* KMCGeigerCounter */,
+			);
+			path = PFS;
+			sourceTree = "<group>";
+		};
+		9CB957A6241F2EC000784FA4 /* KMCGeigerCounter */ = {
+			isa = PBXGroup;
+			children = (
+				9CB957A7241F2EC000784FA4 /* KMCGeigerCounterTick.aiff */,
+				9CB957A8241F2EC000784FA4 /* KMCGeigerCounter.h */,
+				9CB957A9241F2EC000784FA4 /* KMCGeigerCounter.m */,
+			);
+			path = KMCGeigerCounter;
+			sourceTree = "<group>";
+		};
 		9CCFC5C3241506680032F6DF = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +126,8 @@
 		9CCFC5CE241506680032F6DF /* CDDGroupAvatarSwift */ = {
 			isa = PBXGroup;
 			children = (
+				9CB957B2241F2FDB00784FA4 /* CDDGroupAvatarSwift-Bridging-Header.h */,
+				9CB957A5241F2EC000784FA4 /* PFS */,
 				9CCFC5E924154CB90032F6DF /* CDDGroupAvatarSwift */,
 				9CCFC5CF241506690032F6DF /* AppDelegate.swift */,
 				9CCFC5D3241506690032F6DF /* ViewController.swift */,
@@ -218,6 +244,7 @@
 			files = (
 				9CCFC5DC241506690032F6DF /* LaunchScreen.storyboard in Resources */,
 				9CCFC5D9241506690032F6DF /* Assets.xcassets in Resources */,
+				9CB957AA241F2EC000784FA4 /* KMCGeigerCounterTick.aiff in Resources */,
 				9CCFC5D7241506690032F6DF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +294,7 @@
 				9CFE855624164F2C008474D0 /* AvatarManager.swift in Sources */,
 				9CCFC5D0241506690032F6DF /* AppDelegate.swift in Sources */,
 				9C24B6F82418BF510017E2FA /* UIImageView+Group.swift in Sources */,
+				9CB957AB241F2EC000784FA4 /* KMCGeigerCounter.m in Sources */,
 				9C24B6FC2418F67C0017E2FA /* UIButton+NoCacheGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +450,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdd.CDDGroupAvatarSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CDDGroupAvatarSwift/CDDGroupAvatarSwift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -442,6 +471,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdd.CDDGroupAvatarSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CDDGroupAvatarSwift/CDDGroupAvatarSwift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -10,6 +10,13 @@ import UIKit
 
 extension UIButton {
 
+    /// 设置群头像【Image】
+    /// - Parameters:
+    ///   - groupId: 群头像id
+    ///   - groupSource: 群头像数据源数组
+    ///   - state: 状态
+    ///   - setImageHandler: 绘制好的群头像图片
+    ///   - groupImageHandler: (_ groupId: String, _ groupImage: UIImage, _ itemImageArray: [UIImage], _ cacheId: String)
     public func setNoCacheImageAvatar(groupId: String, groupSource: [UIImage], state: UIControl.State, setImageHandler: GroupSetImageHandler? = nil, groupImageHandler: GroupImageHandler? = nil) {
         
         var groupImage = UIImage()
@@ -34,7 +41,13 @@ extension UIButton {
 
     }
     
-    
+    /// 设置群头像【BackgroundImage】
+    /// - Parameters:
+    ///   - groupId: 群头像id
+    ///   - groupSource: 群头像数据源数组
+    ///   - state: 状态
+    ///   - setImageHandler: 绘制好的群头像图片
+    ///   - groupImageHandler: (_ groupId: String, _ groupImage: UIImage, _ itemImageArray: [UIImage], _ cacheId: String)
     public func setNoCacheBackgroundAvatar(groupId: String, groupSource: [UIImage], state: UIControl.State, setImageHandler: GroupSetImageHandler? = nil, groupImageHandler: GroupImageHandler? = nil) {
 
         var groupImage = UIImage()

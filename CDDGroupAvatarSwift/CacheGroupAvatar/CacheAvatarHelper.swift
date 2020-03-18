@@ -17,11 +17,11 @@ public struct CacheAvatarHelper {
     public static func fetchItemCacheArraySource(_ groupSource: [String]) -> [UIImage] {
         
         var cacheArray = [UIImage]()
-        var itemIamge = UIImage()
-        
         for item in groupSource {
-            itemIamge = ImageCache.default.retrieveImageInMemoryCache(forKey: AvatarConfig.urlStr(item)) ?? AvatarManager.placeholderImage
-            cacheArray.append(itemIamge)
+            
+            if let itemIamge = ImageCache.default.retrieveImageInMemoryCache(forKey: AvatarConfig.urlStr(item)) {
+                cacheArray.append(itemIamge)
+            }
         }
         return cacheArray
         
@@ -61,12 +61,13 @@ public struct CacheAvatarHelper {
                 case .success(let back):
                     image = back.image
                     succeed = true
+                    ImageCache.default.store(image, forKey: AvatarConfig.urlStr(value), toDisk: true)
                     
                 case .failure( _):
                     image = placeholderImage
                 }
                 groupImages[index] = image
-                if placeholderSum == groupSource.count {
+                if groupSum == groupSource.count {
                     callCompletedBlock()
                 }
             }

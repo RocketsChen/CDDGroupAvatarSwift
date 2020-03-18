@@ -83,7 +83,11 @@ extension ViewController {
         
         setUpCache()
         
-        setUpNoCache()
+//        setUpNoCache()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        setUpCache()
     }
 
 }
@@ -195,6 +199,9 @@ extension ViewController {
         
         ImageCache.default.clearDiskCache()
         ImageCache.default.clearMemoryCache()
-        setUpLoadData()
+        ImageCache.default.cleanExpiredDiskCache { [weak self] in
+            guard let self = self else { return }
+            return self.setUpLoadData()
+        }
     }
 }

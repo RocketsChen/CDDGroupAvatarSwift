@@ -25,7 +25,8 @@ extension UIImageView {
         let maxSource = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
         let md5Str = AvatarConfig.cacheIdMD5(groupId, maxSource)
         
-        var groupImage = ImageCache.default.retrieveImageInMemoryCache(forKey: md5Str) ?? AvatarManager.placeholderImage
+        var groupImage = AvatarManager.placeholderImage
+        
         var groupUnitImages = [UIImage]()
 
         let handler: GroupImageParamsHandler = {
@@ -37,8 +38,17 @@ extension UIImageView {
             }
         }
         
+        if let image = ImageCache.default.retrieveImageInMemoryCache(forKey: md5Str) {
+            groupImage = image
+            self.image = groupImage
+            if options == .Default {
+                groupUnitImages = CacheAvatarHelper.fetchItemCacheArraySource(groupSource)
+                handler()
+                if groupUnitImages.count == groupSource.count { return }
+            }
+        }
+        
         CacheAvatarHelper.fetchLoadImageSource(groupSource: groupSource, groupImage: groupImage, itemPlaceholder: itemPlaceholder) {[weak self] (unitImages, succeed) in
-            
             guard let self = self else { return }
             
             groupUnitImages = unitImages
@@ -47,6 +57,7 @@ extension UIImageView {
             groupImage = UIImage.cacheGroupImage(groupUnitImages, containerSize, avatarType)
             
             self.image = groupImage
+            ImageCache.default.store(groupImage, forKey: md5Str, toDisk: true)
             
             handler() // block
         }

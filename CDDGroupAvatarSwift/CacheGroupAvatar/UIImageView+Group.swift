@@ -47,8 +47,8 @@ extension UIImageView {
                 if groupUnitImages.count == groupSource.count { return }
             }
         }
-        
-        CacheAvatarHelper.fetchLoadImageSource(groupSource: groupSource, groupImage: groupImage, itemPlaceholder: itemPlaceholder) {[weak self] (unitImages, succeed) in
+        let isCached = ImageCache.default.isCached(forKey: md5Str)
+        CacheAvatarHelper.fetchLoadImageSource(groupSource: groupSource, cacheGroupImage: !isCached ? nil : groupImage, itemPlaceholder: itemPlaceholder) {[weak self] (unitImages, succeed) in
             guard let self = self else { return }
             
             groupUnitImages = unitImages

@@ -129,7 +129,7 @@ extension TestViewController {
         ImageCache.default.clearMemoryCache()
         ImageCache.default.cleanExpiredDiskCache { [weak self] in
             guard let self = self else { return }
-            return self.tableView.reloadData()
+            self.tableView.reloadData()
         }
         
     }

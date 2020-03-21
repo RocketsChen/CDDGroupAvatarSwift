@@ -147,6 +147,8 @@ public typealias GroupImageParamsHandler = () -> Void
 
 public typealias FetchImageHandler = (_ unitImages: [UIImage], _ succeed: Bool) -> Void
 
+public typealias AsynFetchImageHandler = (_ unitImages: [UIImage]) -> Void
+
 public typealias FetchImageParamsHandler = () -> Void
 
 

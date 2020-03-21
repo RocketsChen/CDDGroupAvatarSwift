@@ -29,7 +29,7 @@ public struct CacheAvatarHelper {
     
  
     // MARK: - 批量加载地址头像
-    public static func fetchLoadImageSource(groupSource: [String], groupImage: UIImage, itemPlaceholder: [UIImage]? = nil, completedHandler: FetchImageHandler? = nil) {
+    public static func fetchLoadImageSource(groupSource: [String], cacheGroupImage: UIImage? = nil, itemPlaceholder: [UIImage]? = nil, completedHandler: FetchImageHandler? = nil) {
         
         var groupImages = Array(repeating: UIImage(), count: groupSource.count)
         var succeed: Bool = false
@@ -38,8 +38,10 @@ public struct CacheAvatarHelper {
         var placeholderSum: Int = 0
         
         let callCompletedBlock: GroupImageParamsHandler = {
-            if (completedHandler != nil) {
-                completedHandler!(groupImages, succeed)
+            DispatchQueue.main.async {
+                if (completedHandler != nil) {
+                    completedHandler!(groupImages, succeed)
+                }
             }
         }
         
@@ -49,10 +51,12 @@ public struct CacheAvatarHelper {
             guard let downUrl = url else { continue }
             
             let placeholderImage = AvatarManager.placeholderImage.backItemPlaceholderImage(itemPlaceholder, groupSource.count, index)
-            placeholderSum = placeholderSum + 1
-            groupImages[index] = placeholderImage
-            if placeholderSum == groupSource.count {
-                callCompletedBlock()
+            if cacheGroupImage == nil {
+                placeholderSum = placeholderSum + 1
+                groupImages[index] = placeholderImage
+                if placeholderSum == groupSource.count {
+                    callCompletedBlock()
+                }
             }
             ImageDownloader.default.downloadImage(with: downUrl, options: nil, progressBlock: nil) { result in
                 groupSum = groupSum + 1
@@ -73,4 +77,25 @@ public struct CacheAvatarHelper {
             }
         }
     }
+}
+
+
+
+extension CacheAvatarHelper {
+    
+    
+    /// 异步批量加载头像
+    /// - Parameters:
+    ///   - groupSource: 数据源
+    ///   - itemPlaceholder: 占位图
+    ///   - completedHandler: 返回加载的图像和是否成功的tag
+    public static func asynfetchLoadImageSource(_ groupSource: [String], _ itemPlaceholder: [UIImage]? = nil, _ completedHandler: AsynFetchImageHandler? = nil) {
+        
+        fetchLoadImageSource(groupSource: groupSource, cacheGroupImage: nil, itemPlaceholder: itemPlaceholder) { (unitImages, succeed) in
+            if completedHandler != nil , succeed == true {
+                completedHandler!(unitImages)
+            }
+        }
+    }
+    
 }

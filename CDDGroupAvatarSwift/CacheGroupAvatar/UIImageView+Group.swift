@@ -42,13 +42,13 @@ extension UIImageView {
             groupImage = image
             self.image = groupImage
             if options == .Default {
-                groupUnitImages = CacheAvatarHelper.fetchItemCacheArraySource(groupSource)
+                groupUnitImages = CacheAvatarHelper.fetchItemCacheArraySource(maxSource)
                 handler()
-                if groupUnitImages.count == groupSource.count { return }
+                if groupUnitImages.count == maxSource.count { return }
             }
         }
         let isCached = ImageCache.default.isCached(forKey: md5Str)
-        CacheAvatarHelper.fetchLoadImageSource(groupSource: groupSource, cacheGroupImage: !isCached ? nil : groupImage, itemPlaceholder: itemPlaceholder) {[weak self] (unitImages, succeed) in
+        CacheAvatarHelper.fetchLoadImageSource(groupSource: maxSource, cacheGroupImage: !isCached ? nil : groupImage, itemPlaceholder: itemPlaceholder) {[weak self] (unitImages, succeed) in
             guard let self = self else { return }
             
             groupUnitImages = unitImages

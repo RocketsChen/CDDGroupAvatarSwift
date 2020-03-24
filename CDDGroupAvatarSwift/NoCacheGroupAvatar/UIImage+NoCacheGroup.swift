@@ -13,11 +13,10 @@ extension UIImage {
     
     /// 拼接群头像
     /// - Parameters:
-    ///   - groupSource: 数据源
+    ///   - maxSource: 数据源
     ///   - size: 大小
-    public static func getGroupImage(_ groupSource: [UIImage], _ size: CGSize, _ avatarType: DCGroupAvatarType) -> UIImage {
+    public static func getGroupImage(_ maxSource: [UIImage], _ size: CGSize, _ avatarType: DCGroupAvatarType) -> UIImage {
     
-        let maxSource: [UIImage] = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
         let avatarBgColor = NoCacheAvatarManager.avatarBgColor
         let distance = NoCacheAvatarManager.distanceBetweenAvatar
         

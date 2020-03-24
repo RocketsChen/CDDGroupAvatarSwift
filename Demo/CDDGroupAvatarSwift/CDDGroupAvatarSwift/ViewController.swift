@@ -88,11 +88,11 @@ extension ViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        /// 同步加载头像
-        CacheAvatarHelper.asynfetchLoadImageSource(["006tNc79gy1g56or92vvmj30u00u048a.jpg", "006tNc79gy1g56mcmorgrj30rk0nm0ze.jpg", "006tNc79gy1g57h4j42ppj30u00u00vy.jpg"], nil) { (unitImages) in
-            print(unitImages)
-        }
-        
+        /// 异步加载头像
+//        CacheAvatarHelper.asynfetchLoadImageSource(["006tNc79gy1g56or92vvmj30u00u048a.jpg", "006tNc79gy1g56mcmorgrj30rk0nm0ze.jpg", "006tNc79gy1g57h4j42ppj30u00u00vy.jpg"], nil) { (unitImages) in
+//            print(unitImages)
+//        }
+//
     }
 
 }

@@ -7,20 +7,56 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIImage {
     
-    /// 拼接群头像
-    /// - Parameters:
-    ///   - maxSource: 数据源
-    ///   - size: 大小
-    public static func cacheGroupImage(_ maxSource: [UIImage], _ size: CGSize, _ avatarType: DCGroupAvatarType) -> UIImage {
-    
+    // MARK: - 设置群图片
+    public static func setCacheImageAvatar(_ groupId: String, _ groupSource: [String], _ itemPlaceholder: [UIImage]? = nil,_ size: CGSize, _ options: DCGroupAvatarCacheType? = .Default, _ setImageHandler: GroupSetImageHandler? = nil, groupImageHandler: GroupImageHandler? = nil) {
+        
+        var groupUnitImages = [UIImage]()
+
         let avatarBgColor = AvatarManager.avatarBgColor
         let distance = AvatarManager.distanceBetweenAvatar
+        let avatarType = AvatarManager.groupAvatarType
+        let maxSource = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
+        let md5Str = AvatarConfig.cacheIdMD5(groupId, maxSource)
+        var groupImage = AvatarManager.placeholderImage
         
+        let handler: GroupImageParamsHandler = {
+            if setImageHandler != nil {
+                setImageHandler!(groupImage)
+            }
+            if groupImageHandler != nil {
+                groupImageHandler!(groupId, groupImage, groupUnitImages, AvatarConfig.cacheIdMD5(groupId, maxSource))
+            }
+        }
+        
+        if let image = ImageCache.default.retrieveImageInMemoryCache(forKey: md5Str) {
+            groupImage = image
+            if options == .Default {
+                groupUnitImages = CacheAvatarHelper.fetchItemCacheArraySource(maxSource)
+                handler()
+                if groupUnitImages.count == maxSource.count { return }
+            }
+        }
+        let isCached = ImageCache.default.isCached(forKey: md5Str)
+        CacheAvatarHelper.fetchLoadImageSource(groupSource: maxSource, cacheGroupImage: !isCached ? nil : groupImage, itemPlaceholder: itemPlaceholder) {(unitImages, succeed) in
+            groupUnitImages = unitImages
+            let containerSize = CGSize(width: size.width, height: size.height)
+            groupImage = cacheGroupImage(groupUnitImages, containerSize, avatarType, distance, avatarBgColor)
+            
+            ImageCache.default.store(groupImage, forKey: md5Str, toDisk: true)
+            
+            handler() // block
+        }
+    }
+    
+
+    // MARK: - 拼接群头像
+    private static func cacheGroupImage(_ maxSource: [UIImage], _ size: CGSize, _ avatarType: DCGroupAvatarType, _ distance: CGFloat, _ avatarBgColor: UIColor) -> UIImage {
+    
         var groupImage = UIImage()
-        
         var itemAvaSize: CGSize = CGSize.zero
         var itemAvaPoint: CGPoint = CGPoint.zero
         let containerSize = CGSize(width: size.width, height: size.height)

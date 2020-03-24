@@ -116,6 +116,7 @@ extension ViewController {
     func setUpWeiChatCache() {
         
         AvatarManager.groupAvatarType = .WeChat
+        AvatarManager.distanceBetweenAvatar = 2
         
         avImageViewW2.setImageAvatar(groupId: "avImageViewW2", groupSource: ["1","2"], itemPlaceholder: [UIImage(named: "man")!, UIImage(named: "woman")!])
         avImageViewW3.setImageAvatar(groupId: "avImageViewW3", groupSource: ["006tNc79gy1g56or92vvmj30u00u048a.jpg", "006tNc79gy1g56mcmorgrj30rk0nm0ze.jpg", "006tNc79gy1g57h4j42ppj30u00u00vy.jpg"])
@@ -133,6 +134,7 @@ extension ViewController {
     func setUpNewQQCache() {
         
         AvatarManager.groupAvatarType = .QQ
+        AvatarManager.distanceBetweenAvatar = 1
         
         avImageViewNQ2.setImageAvatar(groupId: "avImageViewNQ2", groupSource: ["1","2"], itemPlaceholder: [UIImage(named: "man")!, UIImage(named: "woman")!])
         avImageViewNQ3.setImageAvatar(groupId: "avImageViewNQ3", groupSource: ["006tNc79gy1g56or92vvmj30u00u048a.jpg", "006tNc79gy1g56mcmorgrj30rk0nm0ze.jpg", "006tNc79gy1g57h4j42ppj30u00u00vy.jpg", "006tNc79gy1g57h4j42ppj30u00u00vy.jpg"])
@@ -144,6 +146,7 @@ extension ViewController {
     func setUpWeiBoCache() {
         
         AvatarManager.groupAvatarType = .WeiBo
+        AvatarManager.distanceBetweenAvatar = 2
         
         avImageViewWeiBo2.setImageAvatar(groupId: "avImageViewWeiBo2", groupSource: ["1","2"], itemPlaceholder: [UIImage(named: "man")!, UIImage(named: "woman")!])
         avImageViewWeiBo3.setImageAvatar(groupId: "avImageViewWeiBo3", groupSource: ["006tNc79gy1g56or92vvmj30u00u048a.jpg", "006tNc79gy1g56mcmorgrj30rk0nm0ze.jpg", "006tNc79gy1g57h4j42ppj30u00u00vy.jpg", "006tNc79gy1g57h4j42ppj30u00u00vy.jpg"])
@@ -159,6 +162,7 @@ extension ViewController {
     func setUpNoCache() {
         
         NoCacheAvatarManager.groupAvatarType = .QQ
+        NoCacheAvatarManager.distanceBetweenAvatar = 1
     
         /// ImageView
         ncImageViewW1.setNoCacheImageAvatar(groupId: "ncImageViewW1", groupSource: [UIImage(named: "noCache1")!])

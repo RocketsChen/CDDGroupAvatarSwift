@@ -20,46 +20,19 @@ extension UIImageView {
     ///   - setImageHandler: 绘制好的群头像图片
     ///   - groupImageHandler: _ groupId: String, _ groupImage: UIImage, _ itemImageArray: [UIImage], _ cacheId: String
     public func setImageAvatar(groupId: String, groupSource: [String], itemPlaceholder: [UIImage]? = nil, options: DCGroupAvatarCacheType? = .Default, setImageHandler: GroupSetImageHandler? = nil, groupImageHandler: GroupImageHandler? = nil) {
-        
-        let avatarType = AvatarManager.groupAvatarType
-        let maxSource = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
-        let md5Str = AvatarConfig.cacheIdMD5(groupId, maxSource)
-        
-        var groupImage = AvatarManager.placeholderImage
-        
-        var groupUnitImages = [UIImage]()
-
-        let handler: GroupImageParamsHandler = {
+     
+        UIImage.setCacheImageAvatar(groupId, groupSource, itemPlaceholder, CGSize(width: self.frame.size.width, height: self.frame.size.height), options, {[weak self] (groupImage) in
+            guard let self = self else { return }
+            self.image = groupImage
             if setImageHandler != nil {
                 setImageHandler!(groupImage)
             }
-            if groupImageHandler != nil {
-                groupImageHandler!(groupId, groupImage, groupUnitImages, AvatarConfig.cacheIdMD5(groupId, maxSource))
-            }
-        }
-        
-        if let image = ImageCache.default.retrieveImageInMemoryCache(forKey: md5Str) {
-            groupImage = image
-            self.image = groupImage
-            if options == .Default {
-                groupUnitImages = CacheAvatarHelper.fetchItemCacheArraySource(maxSource)
-                handler()
-                if groupUnitImages.count == maxSource.count { return }
-            }
-        }
-        let isCached = ImageCache.default.isCached(forKey: md5Str)
-        CacheAvatarHelper.fetchLoadImageSource(groupSource: maxSource, cacheGroupImage: !isCached ? nil : groupImage, itemPlaceholder: itemPlaceholder) {[weak self] (unitImages, succeed) in
+        }) {[weak self] (groupId, groupImage, itemImageArray, cacheId) in
             guard let self = self else { return }
-            
-            groupUnitImages = unitImages
-                
-            let containerSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
-            groupImage = UIImage.cacheGroupImage(groupUnitImages, containerSize, avatarType)
-            
             self.image = groupImage
-            ImageCache.default.store(groupImage, forKey: md5Str, toDisk: true)
-            
-            handler() // block
+            if groupImageHandler != nil {
+                groupImageHandler!(groupId, groupImage, itemImageArray, cacheId)
+            }
         }
     }
 }

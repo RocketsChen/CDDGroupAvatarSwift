@@ -11,15 +11,36 @@ import UIKit
 extension UIImage {
     
     
-    /// 拼接群头像
-    /// - Parameters:
-    ///   - maxSource: 数据源
-    ///   - size: 大小
-    public static func getGroupImage(_ maxSource: [UIImage], _ size: CGSize, _ avatarType: DCGroupAvatarType) -> UIImage {
-    
+    // MARK: - 设置群图片
+    public static func setImageAvatar(_ groupId: String, _ groupSource: [UIImage], _ size: CGSize, _ setImageHandler: GroupSetImageHandler? = nil, groupImageHandler: GroupImageHandler? = nil) {
+        
+        var groupImage = UIImage()
+        
         let avatarBgColor = NoCacheAvatarManager.avatarBgColor
         let distance = NoCacheAvatarManager.distanceBetweenAvatar
-        
+        let avatarType = NoCacheAvatarManager.groupAvatarType
+        let maxSource = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
+
+        let handler: GroupImageParamsHandler = {
+            if setImageHandler != nil {
+                setImageHandler!(groupImage)
+            }
+            if groupImageHandler != nil {
+                groupImageHandler!(groupId, groupImage, maxSource, AvatarConfig.noCacheIdMD5(groupId, maxSource))
+            }
+        }
+
+        let containerSize = CGSize(width: size.width, height: size.height)
+        groupImage = getGroupImage(maxSource, containerSize, avatarType, distance, avatarBgColor)
+
+        handler() // block
+    }
+    
+    
+    
+    // MARK: - 拼接群头像
+    private static func getGroupImage(_ maxSource: [UIImage], _ size: CGSize, _ avatarType: DCGroupAvatarType, _ distance: CGFloat, _ avatarBgColor: UIColor) -> UIImage {
+    
         var groupImage = UIImage()
         
         var itemAvaSize: CGSize = CGSize.zero

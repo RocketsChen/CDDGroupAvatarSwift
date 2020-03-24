@@ -18,27 +18,19 @@ extension UIImageView {
     ///   - groupImageHandler: (_ groupId: String, _ groupImage: UIImage, _ itemImageArray: [UIImage], _ cacheId: String)
     public func setNoCacheImageAvatar(groupId: String, groupSource: [UIImage], setImageHandler: GroupSetImageHandler? = nil, groupImageHandler: GroupImageHandler? = nil) {
         
-        var groupImage = UIImage()
-        
-        let avatarType = NoCacheAvatarManager.groupAvatarType
-        let maxSource: [UIImage] = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
-        
-        let handler: GroupImageParamsHandler = {
+        UIImage.setImageAvatar(groupId, groupSource, CGSize(width: self.frame.size.width, height: self.frame.size.height), {[weak self] (groupImage) in
+            guard let self = self else { return }
+            self.image = groupImage
             if setImageHandler != nil {
                 setImageHandler!(groupImage)
             }
+        }) {[weak self] (groupId, groupImage, itemImageArray, cacheId) in
+            guard let self = self else { return }
+            self.image = groupImage
             if groupImageHandler != nil {
-                groupImageHandler!(groupId, groupImage, maxSource, AvatarConfig.noCacheIdMD5(groupId, maxSource))
+                groupImageHandler!(groupId, groupImage, itemImageArray, cacheId)
             }
         }
-    
-        let containerSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
-        groupImage = UIImage.getGroupImage(maxSource, containerSize, avatarType)
-        self.image = groupImage
-        
-        handler() // block
-        
     }
-
     
 }

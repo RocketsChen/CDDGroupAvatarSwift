@@ -18,26 +18,20 @@ extension UIButton {
     ///   - setImageHandler: 绘制好的群头像图片
     ///   - groupImageHandler: (_ groupId: String, _ groupImage: UIImage, _ itemImageArray: [UIImage], _ cacheId: String)
     public func setNoCacheImageAvatar(groupId: String, groupSource: [UIImage], state: UIControl.State, setImageHandler: GroupSetImageHandler? = nil, groupImageHandler: GroupImageHandler? = nil) {
-        
-        var groupImage = UIImage()
-        
-        let avatarType = NoCacheAvatarManager.groupAvatarType
-        let maxSource: [UIImage] = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
-
-        let handler: GroupImageParamsHandler = {
+    
+        UIImage.setImageAvatar(groupId, groupSource, CGSize(width: self.frame.size.width, height: self.frame.size.height), {[weak self] (groupImage) in
+            guard let self = self else { return }
+            self.setImage(groupImage, for: state)
             if setImageHandler != nil {
                 setImageHandler!(groupImage)
             }
+        }) {[weak self] (groupId, groupImage, itemImageArray, cacheId) in
+            guard let self = self else { return }
+            self.setImage(groupImage, for: state)
             if groupImageHandler != nil {
-                groupImageHandler!(groupId, groupImage, maxSource, AvatarConfig.noCacheIdMD5(groupId, maxSource))
+                groupImageHandler!(groupId, groupImage, itemImageArray, cacheId)
             }
         }
-
-        let containerSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
-        groupImage = UIImage.getGroupImage(maxSource, containerSize, avatarType)
-        self.setImage(groupImage, for: state)
-
-        handler() // block
 
     }
     
@@ -49,28 +43,20 @@ extension UIButton {
     ///   - setImageHandler: 绘制好的群头像图片
     ///   - groupImageHandler: (_ groupId: String, _ groupImage: UIImage, _ itemImageArray: [UIImage], _ cacheId: String)
     public func setNoCacheBackgroundAvatar(groupId: String, groupSource: [UIImage], state: UIControl.State, setImageHandler: GroupSetImageHandler? = nil, groupImageHandler: GroupImageHandler? = nil) {
-
-        var groupImage = UIImage()
         
-        let avatarType = NoCacheAvatarManager.groupAvatarType
-        let maxSource: [UIImage] = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
-
-        let handler: GroupImageParamsHandler = {
+        UIImage.setImageAvatar(groupId, groupSource, CGSize(width: self.frame.size.width, height: self.frame.size.height), {[weak self] (groupImage) in
+            guard let self = self else { return }
+            self.setBackgroundImage(groupImage, for: state)
             if setImageHandler != nil {
                 setImageHandler!(groupImage)
             }
+        }) {[weak self] (groupId, groupImage, itemImageArray, cacheId) in
+            guard let self = self else { return }
+            self.setBackgroundImage(groupImage, for: state)
             if groupImageHandler != nil {
-                groupImageHandler!(groupId, groupImage, maxSource, AvatarConfig.noCacheIdMD5(groupId, maxSource))
+                groupImageHandler!(groupId, groupImage, itemImageArray, cacheId)
             }
         }
-
-        let containerSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
-        groupImage = UIImage.getGroupImage(maxSource, containerSize, avatarType)
-        self.setBackgroundImage(groupImage, for: state)
-
-        handler() // block
     }
-    
-    
 }
 

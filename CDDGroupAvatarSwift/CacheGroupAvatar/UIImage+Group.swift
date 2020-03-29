@@ -22,7 +22,7 @@ extension UIImage {
         let maxSource = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
         let md5Str = AvatarConfig.cacheIdMD5(groupId, maxSource)
         var groupImage = AvatarManager.placeholderImage
-        let isCachedSave = ImageCache.default.isCached(forKey: md5Str)
+        var isCachedSave: Bool = false
         
         let handler: GroupImageParamsHandler = {
             if setImageHandler != nil {
@@ -35,6 +35,7 @@ extension UIImage {
         
         if let image = ImageCache.default.retrieveImageInMemoryCache(forKey: md5Str) {
             groupImage = image
+            isCachedSave = true
             if options == .Default {
                 groupUnitImages = CacheAvatarHelper.fetchItemCacheArraySource(maxSource)
                 handler()

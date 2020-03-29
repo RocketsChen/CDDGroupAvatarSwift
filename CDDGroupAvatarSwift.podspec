@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = 'CDDGroupAvatarSwift'
-s.version      = '1.2.3'
+s.version      = '1.2.4'
 s.summary      = 'iOS 群头像 / Easy to use'
 
 s.description  = <<-DESC
@@ -13,7 +13,7 @@ s.authors      = {'RcoketsChen' => '1062749739@qq.com'}
 s.platform     = :ios, '9.0'
 s.source       = {:git => 'https://github.com/RocketsChen/CDDGroupAvatarSwift.git', :tag => s.version}
 s.requires_arc     = true
-s.frameworks       = 'UIKit'
+s.frameworks       = 'UIKit', 'Foundation'
 s.default_subspec  = 'Cache'
 
     s.subspec 'NoCache' do |ss|

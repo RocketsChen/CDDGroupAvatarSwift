@@ -58,16 +58,16 @@ public struct CacheAvatarHelper {
                     callCompletedBlock()
                 }
             }
-            ImageDownloader.default.downloadImage(with: downUrl, options: nil, progressBlock: nil) { result in
+            
+            KingfisherManager.shared.retrieveImage(with: downUrl) { (result) in
                 groupSum = groupSum + 1
                 var image = UIImage()
+                
                 switch result {
-                case .success(let back):
-                    image = back.image
+                case .success(let imgResult):
+                    image = imgResult.image 
                     succeed = true
-                    ImageCache.default.store(image, forKey: AvatarConfig.urlStr(value), toDisk: true)
-                    
-                case .failure( _):
+                case .failure(_):
                     image = placeholderImage
                 }
                 groupImages[index] = image

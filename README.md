@@ -59,8 +59,8 @@ avaBgButton.setNoCacheBackgroundAvatar(groupId: "avaBgButtonBgImage", groupSourc
 
 | version | note |
 | ------ | ------ | 
-| 1.0.0 | 初步完成基本需求| 
-| 1.1.0 | 集成cocoapods| 
+| 1.1.0 | 初步完成基本需求| 
+| 1.2.0 | 集成cocoapods| 
 
 
 

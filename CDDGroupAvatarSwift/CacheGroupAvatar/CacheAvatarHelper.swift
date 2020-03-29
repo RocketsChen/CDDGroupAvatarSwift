@@ -61,16 +61,16 @@ public struct CacheAvatarHelper {
             
             KingfisherManager.shared.retrieveImage(with: downUrl) { (result) in
                 groupSum = groupSum + 1
-                var image = UIImage()
+                var image: UIImage?
                 
                 switch result {
                 case .success(let imgResult):
-                    image = imgResult.image 
+                    image = imgResult.image
                     succeed = true
                 case .failure(_):
                     image = placeholderImage
                 }
-                groupImages[index] = image
+                groupImages[index] = image ?? placeholderImage
                 if groupSum == groupSource.count {
                     callCompletedBlock()
                 }

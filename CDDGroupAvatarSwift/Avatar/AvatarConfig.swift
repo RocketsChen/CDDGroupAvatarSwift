@@ -103,6 +103,15 @@ public enum DCNumberOfGroupAvatarType: Int {
 
 
 
+// MARK: - Color扩展
+extension UIColor {
+    
+    public static var bgColor: UIColor {
+        return .init(red: 238 / 255.0, green: 238 / 255.0, blue: 238 / 255.0, alpha: 1.0)
+    }
+}
+
+
 
 // MARK: - 方法扩展
 extension AvatarConfig {

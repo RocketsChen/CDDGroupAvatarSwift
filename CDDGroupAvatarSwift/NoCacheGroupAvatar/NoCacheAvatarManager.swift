@@ -19,8 +19,7 @@ public struct NoCacheAvatarManager {
     /// 微信和QQ群内小头像间距（默认值：2）
     public static var distanceBetweenAvatar: CGFloat = AvatarConfig.DCDistanceBetweenAvatar
     
-    
     /// 头像背景(默认微信背景色)
-    public static var avatarBgColor: UIColor = .init(red: 238 / 255.0, green: 238 / 255.0, blue: 238 / 255.0, alpha: 1.0)
+    public static var avatarBgColor: UIColor = UIColor.bgColor
 
 }

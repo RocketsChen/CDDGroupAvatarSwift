@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = 'CDDGroupAvatarSwift'
-s.version      = '1.2.4'
+s.version      = '1.2.5'
 s.summary      = 'iOS 群头像 / Easy to use'
 
 s.description  = <<-DESC

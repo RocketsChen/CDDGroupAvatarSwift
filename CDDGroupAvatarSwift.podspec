@@ -16,26 +16,27 @@ s.requires_arc     = true
 s.frameworks       = 'UIKit'
 s.default_subspec  = 'Cache'
 
-    s.subspec 'NoCache' do |sp|
+    s.subspec 'NoCache' do |ss|
     
-      ss.source_files = 'CDDGroupAvatarSwift/Avatar/*.swift' , 'CDDGroupAvatarSwift/NoCacheGroupAvatar/*.swift'
+      ss.source_files = 'CDDGroupAvatarSwift' , 'CDDGroupAvatar/Avatar/*.swift' , 'CDDGroupAvatar/NoCacheGroupAvatar/*.swift'
       
     end
     
     
-    s.subspec 'Cache' do |sp|
+    s.subspec 'Cache' do |ss|
     
-      ss.source_files = 'CDDGroupAvatarSwift/Avatar/*.swift' , 'CDDGroupAvatarSwift/CacheGroupAvatar/*.swift'
+      ss.source_files = 'CDDGroupAvatarSwift' , 'CDDGroupAvatar/Avatar/*.swift' , 'CDDGroupAvatar/CacheGroupAvatar/*.swift'
       s.dependency 'Kingfisher'
       
     end
     
     
-    s.subspec 'Core' do |sp|
+    s.subspec 'Core' do |ss|
     
-      ss.source_files = 'CDDGroupAvatarSwift/Avatar/*.swift' , 'CDDGroupAvatarSwift/NoCacheGroupAvatar/*.swift' , 'CDDGroupAvatarSwift/CacheGroupAvatar/*.swift'
+      ss.source_files = 'CDDGroupAvatarSwift' , 'CDDGroupAvatar/Avatar/*.swift' , 'CDDGroupAvatar/NoCacheGroupAvatar/*.swift' , 'CDDGroupAvatar/CacheGroupAvatar/*.swift'
       s.dependency 'Kingfisher'
       
     end
     
 end
+

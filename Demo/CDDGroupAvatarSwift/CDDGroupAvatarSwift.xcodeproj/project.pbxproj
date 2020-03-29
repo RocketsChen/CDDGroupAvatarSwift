@@ -8,14 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		73D461603818EE0C8A81A817 /* libPods-CDDGroupAvatarSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D044FC243C85E60DD1A3EAD0 /* libPods-CDDGroupAvatarSwift.a */; };
-		9C24B6F42418BE3D0017E2FA /* CacheAvatarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24B6F32418BE3D0017E2FA /* CacheAvatarHelper.swift */; };
-		9C24B6F62418BF2D0017E2FA /* UIButton+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24B6F52418BF2D0017E2FA /* UIButton+Group.swift */; };
-		9C24B6F82418BF510017E2FA /* UIImageView+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24B6F72418BF510017E2FA /* UIImageView+Group.swift */; };
-		9C24B6FA2418F2B00017E2FA /* NoCacheAvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24B6F92418F2B00017E2FA /* NoCacheAvatarManager.swift */; };
-		9C24B6FC2418F67C0017E2FA /* UIButton+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24B6FB2418F67C0017E2FA /* UIButton+NoCacheGroup.swift */; };
-		9C24B6FE2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24B6FD2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift */; };
-		9C3772DE241B955E00EF890A /* UIImage+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3772DD241B955E00EF890A /* UIImage+NoCacheGroup.swift */; };
-		9C7E38BB241E177400053FF0 /* UIImage+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E38BA241E177400053FF0 /* UIImage+Group.swift */; };
+		9C172AAA2430CD3A00A7D3E0 /* UIImage+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172A9D2430CD3A00A7D3E0 /* UIImage+NoCacheGroup.swift */; };
+		9C172AAB2430CD3A00A7D3E0 /* NoCacheAvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172A9E2430CD3A00A7D3E0 /* NoCacheAvatarManager.swift */; };
+		9C172AAC2430CD3A00A7D3E0 /* UIButton+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172A9F2430CD3A00A7D3E0 /* UIButton+NoCacheGroup.swift */; };
+		9C172AAD2430CD3A00A7D3E0 /* UIImageView+NoCacheGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172AA02430CD3A00A7D3E0 /* UIImageView+NoCacheGroup.swift */; };
+		9C172AAE2430CD3A00A7D3E0 /* UIImageView+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172AA22430CD3A00A7D3E0 /* UIImageView+Group.swift */; };
+		9C172AAF2430CD3A00A7D3E0 /* CacheAvatarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172AA32430CD3A00A7D3E0 /* CacheAvatarHelper.swift */; };
+		9C172AB02430CD3A00A7D3E0 /* UIButton+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172AA42430CD3A00A7D3E0 /* UIButton+Group.swift */; };
+		9C172AB12430CD3A00A7D3E0 /* UIImage+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172AA52430CD3A00A7D3E0 /* UIImage+Group.swift */; };
+		9C172AB22430CD3A00A7D3E0 /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172AA62430CD3A00A7D3E0 /* AvatarManager.swift */; };
+		9C172AB32430CD3A00A7D3E0 /* AvatarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172AA82430CD3A00A7D3E0 /* AvatarHelper.swift */; };
+		9C172AB42430CD3A00A7D3E0 /* AvatarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C172AA92430CD3A00A7D3E0 /* AvatarConfig.swift */; };
 		9CB957AA241F2EC000784FA4 /* KMCGeigerCounterTick.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9CB957A7241F2EC000784FA4 /* KMCGeigerCounterTick.aiff */; };
 		9CB957AB241F2EC000784FA4 /* KMCGeigerCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB957A9241F2EC000784FA4 /* KMCGeigerCounter.m */; };
 		9CCFC5D0241506690032F6DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC5CF241506690032F6DF /* AppDelegate.swift */; };
@@ -24,22 +27,22 @@
 		9CCFC5D9241506690032F6DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CCFC5D8241506690032F6DF /* Assets.xcassets */; };
 		9CCFC5DC241506690032F6DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CCFC5DA241506690032F6DF /* LaunchScreen.storyboard */; };
 		9CCFC5E824154AE20032F6DF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC5E724154AE20032F6DF /* TestViewController.swift */; };
-		9CCFC5EE24154CC70032F6DF /* AvatarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC5ED24154CC70032F6DF /* AvatarConfig.swift */; };
-		9CFE855624164F2C008474D0 /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFE855524164F2C008474D0 /* AvatarManager.swift */; };
-		9CFE855824165811008474D0 /* AvatarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFE855724165811008474D0 /* AvatarHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		74FC7A07B969247A327C0E75 /* Pods-CDDGroupAvatarSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDDGroupAvatarSwift.debug.xcconfig"; path = "Target Support Files/Pods-CDDGroupAvatarSwift/Pods-CDDGroupAvatarSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		7E1ECD12E663522FE3602BF1 /* Pods-CDDGroupAvatarSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDDGroupAvatarSwift.release.xcconfig"; path = "Target Support Files/Pods-CDDGroupAvatarSwift/Pods-CDDGroupAvatarSwift.release.xcconfig"; sourceTree = "<group>"; };
-		9C24B6F32418BE3D0017E2FA /* CacheAvatarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAvatarHelper.swift; sourceTree = "<group>"; };
-		9C24B6F52418BF2D0017E2FA /* UIButton+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Group.swift"; sourceTree = "<group>"; };
-		9C24B6F72418BF510017E2FA /* UIImageView+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Group.swift"; sourceTree = "<group>"; };
-		9C24B6F92418F2B00017E2FA /* NoCacheAvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCacheAvatarManager.swift; sourceTree = "<group>"; };
-		9C24B6FB2418F67C0017E2FA /* UIButton+NoCacheGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+NoCacheGroup.swift"; sourceTree = "<group>"; };
-		9C24B6FD2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+NoCacheGroup.swift"; sourceTree = "<group>"; };
-		9C3772DD241B955E00EF890A /* UIImage+NoCacheGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+NoCacheGroup.swift"; sourceTree = "<group>"; };
-		9C7E38BA241E177400053FF0 /* UIImage+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Group.swift"; sourceTree = "<group>"; };
+		9C172A9D2430CD3A00A7D3E0 /* UIImage+NoCacheGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+NoCacheGroup.swift"; sourceTree = "<group>"; };
+		9C172A9E2430CD3A00A7D3E0 /* NoCacheAvatarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoCacheAvatarManager.swift; sourceTree = "<group>"; };
+		9C172A9F2430CD3A00A7D3E0 /* UIButton+NoCacheGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+NoCacheGroup.swift"; sourceTree = "<group>"; };
+		9C172AA02430CD3A00A7D3E0 /* UIImageView+NoCacheGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+NoCacheGroup.swift"; sourceTree = "<group>"; };
+		9C172AA22430CD3A00A7D3E0 /* UIImageView+Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Group.swift"; sourceTree = "<group>"; };
+		9C172AA32430CD3A00A7D3E0 /* CacheAvatarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheAvatarHelper.swift; sourceTree = "<group>"; };
+		9C172AA42430CD3A00A7D3E0 /* UIButton+Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Group.swift"; sourceTree = "<group>"; };
+		9C172AA52430CD3A00A7D3E0 /* UIImage+Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Group.swift"; sourceTree = "<group>"; };
+		9C172AA62430CD3A00A7D3E0 /* AvatarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarManager.swift; sourceTree = "<group>"; };
+		9C172AA82430CD3A00A7D3E0 /* AvatarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarHelper.swift; sourceTree = "<group>"; };
+		9C172AA92430CD3A00A7D3E0 /* AvatarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarConfig.swift; sourceTree = "<group>"; };
 		9CB957A7241F2EC000784FA4 /* KMCGeigerCounterTick.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = KMCGeigerCounterTick.aiff; sourceTree = "<group>"; };
 		9CB957A8241F2EC000784FA4 /* KMCGeigerCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCGeigerCounter.h; sourceTree = "<group>"; };
 		9CB957A9241F2EC000784FA4 /* KMCGeigerCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCGeigerCounter.m; sourceTree = "<group>"; };
@@ -52,9 +55,6 @@
 		9CCFC5DB241506690032F6DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CCFC5DD241506690032F6DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CCFC5E724154AE20032F6DF /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		9CCFC5ED24154CC70032F6DF /* AvatarConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarConfig.swift; sourceTree = "<group>"; };
-		9CFE855524164F2C008474D0 /* AvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarManager.swift; sourceTree = "<group>"; };
-		9CFE855724165811008474D0 /* AvatarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarHelper.swift; sourceTree = "<group>"; };
 		D044FC243C85E60DD1A3EAD0 /* libPods-CDDGroupAvatarSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CDDGroupAvatarSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,6 +85,49 @@
 				7E1ECD12E663522FE3602BF1 /* Pods-CDDGroupAvatarSwift.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9C172A9B2430CD3A00A7D3E0 /* CDDGroupAvatarSwift */ = {
+			isa = PBXGroup;
+			children = (
+				9C172A9C2430CD3A00A7D3E0 /* NoCacheGroupAvatar */,
+				9C172AA12430CD3A00A7D3E0 /* CacheGroupAvatar */,
+				9C172AA72430CD3A00A7D3E0 /* Avatar */,
+			);
+			name = CDDGroupAvatarSwift;
+			path = ../../../CDDGroupAvatarSwift;
+			sourceTree = "<group>";
+		};
+		9C172A9C2430CD3A00A7D3E0 /* NoCacheGroupAvatar */ = {
+			isa = PBXGroup;
+			children = (
+				9C172A9D2430CD3A00A7D3E0 /* UIImage+NoCacheGroup.swift */,
+				9C172A9E2430CD3A00A7D3E0 /* NoCacheAvatarManager.swift */,
+				9C172A9F2430CD3A00A7D3E0 /* UIButton+NoCacheGroup.swift */,
+				9C172AA02430CD3A00A7D3E0 /* UIImageView+NoCacheGroup.swift */,
+			);
+			path = NoCacheGroupAvatar;
+			sourceTree = "<group>";
+		};
+		9C172AA12430CD3A00A7D3E0 /* CacheGroupAvatar */ = {
+			isa = PBXGroup;
+			children = (
+				9C172AA22430CD3A00A7D3E0 /* UIImageView+Group.swift */,
+				9C172AA32430CD3A00A7D3E0 /* CacheAvatarHelper.swift */,
+				9C172AA42430CD3A00A7D3E0 /* UIButton+Group.swift */,
+				9C172AA52430CD3A00A7D3E0 /* UIImage+Group.swift */,
+				9C172AA62430CD3A00A7D3E0 /* AvatarManager.swift */,
+			);
+			path = CacheGroupAvatar;
+			sourceTree = "<group>";
+		};
+		9C172AA72430CD3A00A7D3E0 /* Avatar */ = {
+			isa = PBXGroup;
+			children = (
+				9C172AA82430CD3A00A7D3E0 /* AvatarHelper.swift */,
+				9C172AA92430CD3A00A7D3E0 /* AvatarConfig.swift */,
+			);
+			path = Avatar;
 			sourceTree = "<group>";
 		};
 		9CB957A5241F2EC000784FA4 /* PFS */ = {
@@ -127,8 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				9CB957B2241F2FDB00784FA4 /* CDDGroupAvatarSwift-Bridging-Header.h */,
+				9C172A9B2430CD3A00A7D3E0 /* CDDGroupAvatarSwift */,
 				9CB957A5241F2EC000784FA4 /* PFS */,
-				9CCFC5E924154CB90032F6DF /* CDDGroupAvatarSwift */,
 				9CCFC5CF241506690032F6DF /* AppDelegate.swift */,
 				9CCFC5D3241506690032F6DF /* ViewController.swift */,
 				9CCFC5E724154AE20032F6DF /* TestViewController.swift */,
@@ -138,49 +181,6 @@
 				9CCFC5DD241506690032F6DF /* Info.plist */,
 			);
 			path = CDDGroupAvatarSwift;
-			sourceTree = "<group>";
-		};
-		9CCFC5E924154CB90032F6DF /* CDDGroupAvatarSwift */ = {
-			isa = PBXGroup;
-			children = (
-				9CCFC5EC24154CB90032F6DF /* Avatar */,
-				9CCFC5EA24154CB90032F6DF /* NoCacheGroupAvatar */,
-				9CCFC5EB24154CB90032F6DF /* CacheGroupAvatar */,
-			);
-			name = CDDGroupAvatarSwift;
-			path = ../../../CDDGroupAvatarSwift;
-			sourceTree = "<group>";
-		};
-		9CCFC5EA24154CB90032F6DF /* NoCacheGroupAvatar */ = {
-			isa = PBXGroup;
-			children = (
-				9C24B6F92418F2B00017E2FA /* NoCacheAvatarManager.swift */,
-				9C3772DD241B955E00EF890A /* UIImage+NoCacheGroup.swift */,
-				9C24B6FB2418F67C0017E2FA /* UIButton+NoCacheGroup.swift */,
-				9C24B6FD2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift */,
-			);
-			path = NoCacheGroupAvatar;
-			sourceTree = "<group>";
-		};
-		9CCFC5EB24154CB90032F6DF /* CacheGroupAvatar */ = {
-			isa = PBXGroup;
-			children = (
-				9CFE855524164F2C008474D0 /* AvatarManager.swift */,
-				9C24B6F32418BE3D0017E2FA /* CacheAvatarHelper.swift */,
-				9C24B6F52418BF2D0017E2FA /* UIButton+Group.swift */,
-				9C24B6F72418BF510017E2FA /* UIImageView+Group.swift */,
-				9C7E38BA241E177400053FF0 /* UIImage+Group.swift */,
-			);
-			path = CacheGroupAvatar;
-			sourceTree = "<group>";
-		};
-		9CCFC5EC24154CB90032F6DF /* Avatar */ = {
-			isa = PBXGroup;
-			children = (
-				9CCFC5ED24154CC70032F6DF /* AvatarConfig.swift */,
-				9CFE855724165811008474D0 /* AvatarHelper.swift */,
-			);
-			path = Avatar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,21 +281,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C24B6FA2418F2B00017E2FA /* NoCacheAvatarManager.swift in Sources */,
+				9C172AAA2430CD3A00A7D3E0 /* UIImage+NoCacheGroup.swift in Sources */,
 				9CCFC5D4241506690032F6DF /* ViewController.swift in Sources */,
-				9C7E38BB241E177400053FF0 /* UIImage+Group.swift in Sources */,
-				9C24B6F62418BF2D0017E2FA /* UIButton+Group.swift in Sources */,
-				9C3772DE241B955E00EF890A /* UIImage+NoCacheGroup.swift in Sources */,
+				9C172AAB2430CD3A00A7D3E0 /* NoCacheAvatarManager.swift in Sources */,
+				9C172AB12430CD3A00A7D3E0 /* UIImage+Group.swift in Sources */,
+				9C172AB42430CD3A00A7D3E0 /* AvatarConfig.swift in Sources */,
+				9C172AB32430CD3A00A7D3E0 /* AvatarHelper.swift in Sources */,
 				9CCFC5E824154AE20032F6DF /* TestViewController.swift in Sources */,
-				9CFE855824165811008474D0 /* AvatarHelper.swift in Sources */,
-				9CCFC5EE24154CC70032F6DF /* AvatarConfig.swift in Sources */,
-				9C24B6FE2418F68F0017E2FA /* UIImageView+NoCacheGroup.swift in Sources */,
-				9C24B6F42418BE3D0017E2FA /* CacheAvatarHelper.swift in Sources */,
-				9CFE855624164F2C008474D0 /* AvatarManager.swift in Sources */,
+				9C172AB22430CD3A00A7D3E0 /* AvatarManager.swift in Sources */,
 				9CCFC5D0241506690032F6DF /* AppDelegate.swift in Sources */,
-				9C24B6F82418BF510017E2FA /* UIImageView+Group.swift in Sources */,
+				9C172AAC2430CD3A00A7D3E0 /* UIButton+NoCacheGroup.swift in Sources */,
+				9C172AAD2430CD3A00A7D3E0 /* UIImageView+NoCacheGroup.swift in Sources */,
+				9C172AB02430CD3A00A7D3E0 /* UIButton+Group.swift in Sources */,
 				9CB957AB241F2EC000784FA4 /* KMCGeigerCounter.m in Sources */,
-				9C24B6FC2418F67C0017E2FA /* UIButton+NoCacheGroup.swift in Sources */,
+				9C172AAE2430CD3A00A7D3E0 /* UIImageView+Group.swift in Sources */,
+				9C172AAF2430CD3A00A7D3E0 /* CacheAvatarHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

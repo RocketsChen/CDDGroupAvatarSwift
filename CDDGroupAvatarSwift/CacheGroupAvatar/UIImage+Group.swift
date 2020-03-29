@@ -22,7 +22,7 @@ extension UIImage {
         let maxSource = AvatarHelper.getTypefMaxCount(groupSource, avatarType)
         let md5Str = AvatarConfig.cacheIdMD5(groupId, maxSource)
         var groupImage = AvatarManager.placeholderImage
-        let isCachedSave = Kingfisher.ImageCache.default.isCached(forKey: md5Str)
+        let isCachedSave = ImageCache.default.isCached(forKey: md5Str)
         
         let handler: GroupImageParamsHandler = {
             if setImageHandler != nil {
@@ -33,7 +33,7 @@ extension UIImage {
             }
         }
         
-        if let image = Kingfisher.ImageCache.default.retrieveImageInMemoryCache(forKey: md5Str) {
+        if let image = ImageCache.default.retrieveImageInMemoryCache(forKey: md5Str) {
             groupImage = image
             if options == .Default {
                 groupUnitImages = CacheAvatarHelper.fetchItemCacheArraySource(maxSource)
@@ -45,8 +45,7 @@ extension UIImage {
             groupUnitImages = unitImages
             let containerSize = CGSize(width: size.width, height: size.height)
             groupImage = cacheGroupImage(groupUnitImages, containerSize, avatarType, distance, avatarBgColor)
-            
-            Kingfisher.ImageCache.default.store(groupImage, forKey: md5Str, toDisk: true)
+            ImageCache.default.store(groupImage, forKey: md5Str, toDisk: true)
             
             handler() // block
         }

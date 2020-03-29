@@ -19,7 +19,7 @@ public struct CacheAvatarHelper {
         var cacheArray = [UIImage]()
         for item in groupSource {
             
-            if let itemIamge = Kingfisher.ImageCache.default.retrieveImageInMemoryCache(forKey: AvatarConfig.urlStr(item)) {
+            if let itemIamge = ImageCache.default.retrieveImageInMemoryCache(forKey: AvatarConfig.urlStr(item)) {
                 cacheArray.append(itemIamge)
             }
         }
@@ -58,14 +58,14 @@ public struct CacheAvatarHelper {
                     callCompletedBlock()
                 }
             }
-            Kingfisher.ImageDownloader.default.downloadImage(with: downUrl, options: nil, progressBlock: nil) { result in
+            ImageDownloader.default.downloadImage(with: downUrl, options: nil, progressBlock: nil) { result in
                 groupSum = groupSum + 1
                 var image = UIImage()
                 switch result {
                 case .success(let back):
                     image = back.image
                     succeed = true
-                    Kingfisher.ImageCache.default.store(image, forKey: AvatarConfig.urlStr(value), toDisk: true)
+                    ImageCache.default.store(image, forKey: AvatarConfig.urlStr(value), toDisk: true)
                     
                 case .failure( _):
                     image = placeholderImage

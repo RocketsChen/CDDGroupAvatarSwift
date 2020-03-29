@@ -92,7 +92,7 @@ extension UIImage {
             
         }else { // WeiBo
             
-            let bordWidth: CGFloat = NoCacheAvatarManager.bordWidth
+            let bordWidth: CGFloat = AvatarManager.bordWidth
             let radius: CGFloat = AvatarHelperTool.calculateRadiusWeiBoAvatarGroup(maxSource.count, containerSize, distance)
             
             for (index, value) in maxSource.enumerated() {

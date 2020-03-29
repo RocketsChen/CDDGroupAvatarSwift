@@ -112,42 +112,6 @@ extension UIColor {
 }
 
 
-
-// MARK: - 方法扩展
-extension AvatarConfig {
-    
-    public static func urlStr(_ avaStr: String) -> String {
-        
-        guard let baseUrl = AvatarManager.baseUrl else {
-            return avaStr
-        }
-        
-        return avaStr.contains("www.") ? avaStr : "\(baseUrl)\(avaStr)"
-    }
-
-    public static func cacheIdMD5(_ groupId: String , _ groupSource: [String]) -> String {
-        idMD5(groupId, groupSource)
-    }
-
-    public static func noCacheIdMD5(_ groupId: String , _ groupSource: [UIImage]) -> String {
-        return idMD5(groupId, groupSource)
-    }
-    
-    
-    // MARK: - 私有方法
-    private static func idMD5(_ groupId: String , _ groupSource: [Any]) -> String {
-        
-        if groupSource.count == 0 {
-            return ""
-        }
-        
-        let appStrs = "id\(groupId)_num\(groupSource.count)_lastObj\(groupSource.last!)_distance\(AvatarManager.distanceBetweenAvatar)_bordWidth\(AvatarManager.avatarBgColor)_bgColor\(AvatarManager.avatarBgColor)"
-        return appStrs.md5 ?? ""
-    }
-
-}
-
-
 public typealias GroupImageHandler = ((_ groupId: String, _ groupImage: UIImage, _ itemImageArray: [UIImage], _ cacheId: String) -> Void)
 
 public typealias GroupSetImageHandler = (_ setImage: UIImage) -> Void

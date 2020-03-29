@@ -23,3 +23,25 @@ public struct NoCacheAvatarManager {
     public static var avatarBgColor: UIColor = UIColor.bgColor
 
 }
+
+
+// MARK: - 方法扩展
+extension AvatarConfig {
+    
+    public static func noCacheIdMD5(_ groupId: String , _ groupSource: [UIImage]) -> String {
+        return idMD5(groupId, groupSource)
+    }
+    
+    
+    // MARK: - 私有方法
+    private static func idMD5(_ groupId: String , _ groupSource: [Any]) -> String {
+        
+        if groupSource.count == 0 {
+            return ""
+        }
+        
+        let appStrs = "id\(groupId)_num\(groupSource.count)_lastObj\(groupSource.last!)_distance\(NoCacheAvatarManager.distanceBetweenAvatar)_bordWidth\(NoCacheAvatarManager.avatarBgColor)_bgColor\(NoCacheAvatarManager.avatarBgColor)"
+        return appStrs.md5 ?? ""
+    }
+
+}

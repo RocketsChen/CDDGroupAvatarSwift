@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = 'CDDGroupAvatarSwift'
-s.version      = '1.2.1'
+s.version      = '1.2.2'
 s.summary      = 'iOS 群头像 / Easy to use'
 
 s.description  = <<-DESC
@@ -11,21 +11,21 @@ s.homepage     = 'https://github.com/RocketsChen/CDDGroupAvatarSwift'
 s.license      = 'MIT'  #开源协议
 s.authors      = {'RcoketsChen' => '1062749739@qq.com'}
 s.platform     = :ios, '9.0'
-s.source       = {:git => 'https://github.com/RocketsChen/CDDGroupAvatarSwift.git', :tag => '1.2.1'}
+s.source       = {:git => 'https://github.com/RocketsChen/CDDGroupAvatarSwift.git', :tag => '1.2.2'}
 s.requires_arc     = true
 s.frameworks       = 'UIKit'
 s.default_subspec  = 'Cache'
 
     s.subspec 'NoCache' do |ss|
     
-      ss.source_files = 'CDDGroupAvatarSwift' , 'CDDGroupAvatar/Avatar/*.swift' , 'CDDGroupAvatar/NoCacheGroupAvatar/*.swift'
+      ss.source_files = 'CDDGroupAvatarSwift' , 'CDDGroupAvatarSwift/Avatar/*.swift' , 'CDDGroupAvatarSwift/NoCacheGroupAvatar/*.swift'
       
     end
     
     
     s.subspec 'Cache' do |ss|
     
-      ss.source_files = 'CDDGroupAvatarSwift' , 'CDDGroupAvatar/Avatar/*.swift' , 'CDDGroupAvatar/CacheGroupAvatar/*.swift'
+      ss.source_files = 'CDDGroupAvatarSwift' , 'CDDGroupAvatarSwift/Avatar/*.swift' , 'CDDGroupAvatarSwift/CacheGroupAvatar/*.swift'
       s.dependency 'Kingfisher'
       
     end
@@ -33,7 +33,7 @@ s.default_subspec  = 'Cache'
     
     s.subspec 'Core' do |ss|
     
-      ss.source_files = 'CDDGroupAvatarSwift' , 'CDDGroupAvatar/Avatar/*.swift' , 'CDDGroupAvatar/NoCacheGroupAvatar/*.swift' , 'CDDGroupAvatar/CacheGroupAvatar/*.swift'
+      ss.source_files = 'CDDGroupAvatarSwift' , 'CDDGroupAvatarSwift/Avatar/*.swift' , 'CDDGroupAvatarSwift/NoCacheGroupAvatar/*.swift' , 'CDDGroupAvatarSwift/CacheGroupAvatar/*.swift'
       s.dependency 'Kingfisher'
       
     end

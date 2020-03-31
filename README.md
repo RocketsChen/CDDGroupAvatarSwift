@@ -10,11 +10,13 @@
 
 #### 安装：
 
-* CocoaPods
+<del> * CocoaPods
 
 1：在 Podfile 中添加 pod '`CDDGroupAvatarSwift`'，执行 pod install 或 pod update。
 
    * 如果只需要无缓存版本：pod '`CDDGroupAvatarSwift/NoCache`，更多详情可以查看podspec文件
+
+</del>
 
 * 手动导入
 
@@ -60,7 +62,6 @@ avaBgButton.setNoCacheBackgroundAvatar(groupId: "avaBgButtonBgImage", groupSourc
 | version | note |
 | ------ | ------ | 
 | 1.1.0 | 初步完成基本需求| 
-| 1.2.0 | 集成cocoapods| 
 
 
 
